@@ -1,9 +1,11 @@
 package cgs;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import java.io.File;
 import java.io.PrintWriter;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import soot.jimple.toolkits.callgraph.CallGraph;
 
 public class CGSerializer {

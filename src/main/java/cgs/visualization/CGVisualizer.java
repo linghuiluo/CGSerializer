@@ -1,19 +1,21 @@
 package cgs.visualization;
 
-import cgs.CGDeserializer;
-import cgs.MyCallGraph;
-import cgs.MyEdge;
-import cgs.stats.Callee;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import org.graphstream.graph.Edge;
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.MultiGraph;
 import org.graphstream.ui.view.Viewer;
+
+import cgs.CGDeserializer;
+import cgs.MyCallGraph;
+import cgs.MyEdge;
+import cgs.stats.Callee;
 
 public class CGVisualizer {
 
