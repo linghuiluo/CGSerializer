@@ -1,34 +1,37 @@
 package cgs.stats;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.PrintWriter;
-
+import cgs.CGDeserializer;
+import cgs.MyCallGraph;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
-
-import cgs.CGDeserializer;
-import cgs.MyCallGraph;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintWriter;
 
 public class IncompleteCGStats {
 
   private static PrintWriter writer;
 
   public static void main(String... args) throws FileNotFoundException {
-    String allFindingsPath = "E:\\Git\\Github\\taintbench\\GitPod-GITHUB\\AllSuite\\allFindings";
+    String allFindingsPath = "E:\\Git\\Github\\callgraph\\evaluation\\taintbench";
+    // String
+    // serializedCgs="E:\\Git\\Github\\callgraph\\evaluation\\09.03\\raw-data\\Inst-636682306\\cg-serialized\\";
+    // String outputPath =
+    // "E:\\Git\\Github\\callgraph\\evaluation\\09.03\\raw-data\\Inst-636682306\\cgIncompleteOutput.csv";
+    String serializedCgs =
+        "E:\\Git\\Github\\callgraph\\CGBench_Test\\AllFdResults\\fdgencg\\23.04\\tb\\cg-serialized\\";
+    String outputPath =
+        "E:\\Git\\Github\\callgraph\\CGBench_Test\\AllFdResults\\fdgencg\\23.04\\tb\\cg-serialized\\gencg-cgIncompleteOutput.csv";
     File allFindingsDir = new File(allFindingsPath);
-    String outputPath = "cgIncompleteOutput.csv";
     writer = new PrintWriter(new File(outputPath));
     writer.print("apk;flowID;type;stepID;class;method\n");
     for (File tbFindingsPath : allFindingsDir.listFiles()) {
       String serializedCg =
-          "cg-serialized\\"
-              + tbFindingsPath.getName().split("_findings.json")[0]
-              + "_cg_FD_271.json";
+          serializedCgs + tbFindingsPath.getName().split("_findings.json")[0] + "_cg_FD_271.json";
       File cgFile = new File(serializedCg);
       if (!cgFile.exists()) System.err.println(serializedCg + " doesn't exist");
       else {

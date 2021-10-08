@@ -189,7 +189,13 @@ public class Callee {
               if (javaPara.startsWith("final ")) javaPara = javaPara.replace("final ", "");
               javaPara = javaPara.split("\\s")[0];
               String jimplePara = jimpleParameterTypes[i];
-              if (isInnerClass) jimplePara = jimpleParameterTypes[i + 1];
+
+              if (isInnerClass)
+                if (i + 1 < jimpleParameterTypes.length) {
+                  jimplePara = jimpleParameterTypes[i + 1];
+                } else {
+                  return false;
+                }
               if (javaPara.endsWith("...")) // take care of varargs
               {
                 javaPara = javaPara.replace("...", "[]");

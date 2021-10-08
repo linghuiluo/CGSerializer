@@ -1,9 +1,8 @@
 package cgs;
 
+import cgs.stats.Callee;
 import java.util.HashSet;
 import java.util.Set;
-
-import cgs.stats.Callee;
 
 public class MyCallGraph {
 
