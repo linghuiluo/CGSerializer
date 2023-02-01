@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
     - name: Set up JDK 1.8
@@ -25,6 +24,7 @@ jobs:
         cd soot
         git checkout fe86c3e73d9b7bcd810dadd2aa81351d4288642d
         mvn install -DskipTests
+    - uses: actions/checkout@v2
     - name: Build CGSerializer
       run: mvn install -DskipTests
     - run: ls
