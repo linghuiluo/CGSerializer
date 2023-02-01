@@ -17,15 +17,9 @@ public class IncompleteCGStats {
   private static PrintWriter writer;
 
   public static void main(String... args) throws FileNotFoundException {
-    String allFindingsPath = "E:\\Git\\Github\\callgraph\\evaluation\\taintbench";
-    // String
-    // serializedCgs="E:\\Git\\Github\\callgraph\\evaluation\\09.03\\raw-data\\Inst-636682306\\cg-serialized\\";
-    // String outputPath =
-    // "E:\\Git\\Github\\callgraph\\evaluation\\09.03\\raw-data\\Inst-636682306\\cgIncompleteOutput.csv";
-    String serializedCgs =
-        "E:\\Git\\Github\\callgraph\\CGBench_Test\\AllFdResults\\fdgencg\\23.04\\tb\\cg-serialized\\";
-    String outputPath =
-        "E:\\Git\\Github\\callgraph\\CGBench_Test\\AllFdResults\\fdgencg\\23.04\\tb\\cg-serialized\\gencg-cgIncompleteOutput.csv";
+    String allFindingsPath = args[0];
+    String serializedCgs = args[1];
+    String outputPath = args[2];
     File allFindingsDir = new File(allFindingsPath);
     writer = new PrintWriter(new File(outputPath));
     writer.print("apk;flowID;type;stepID;class;method\n");

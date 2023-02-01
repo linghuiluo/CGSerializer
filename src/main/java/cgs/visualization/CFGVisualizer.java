@@ -20,8 +20,8 @@ public class CFGVisualizer {
   private static boolean onlyShowVirtualMethod = false;
 
   public static void main(String... args) {
-    String name = "ActivityLifecycle4_cfg_DummyMainMethod.json";
-    String file = "E:\\Git\\Github\\callgraph\\CGBench_Test\\ActivityLifecycle4\\" + name;
+    String file =
+        "/Users/llinghui/Projects/GitHub/SpringDemo/multipleRequests/gencg-output/instrumented-app_cfg_FD_271.json";
     MyCFG cfg = CFGDeserializer.deserialize(file);
     MultiGraph graph = new MultiGraph("CFG Visualization");
     for (UnitEdge edge : cfg.edges) {

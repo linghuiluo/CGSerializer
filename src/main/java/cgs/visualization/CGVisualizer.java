@@ -39,13 +39,13 @@ public class CGVisualizer {
   private static LabelMode nodeLabel = LabelMode.Simple;
 
   private static void addIncluded() {
-    // included.add("averroes");
-    // included.add("onlineshop");
+    included.add("averroes");
+    included.add("springbench.multiplerequests");
   }
 
   private static void addSelected() {
     // selected.add("onlineshop");
-    // selected.add("averroes");
+    selected.add("averroes");
   }
 
   private static void setSourceAndSinkForShortestPaths() {
@@ -57,7 +57,7 @@ public class CGVisualizer {
     // String file =
     // "E:\\Git\\Github\\callgraph\\CGBench_Test\\chat_hook_case_1\\chat_hook_case_1_cg_FD_271.json";
     String file =
-        "E:\\Git\\Github\\callgraph\\DroidBench30\\benchmark\\apks\\Lifecycle\\ActivityLifecycle2_cg_FD_271.json";
+        "/Users/llinghui/Projects/GitHub/SpringDemo/multipleRequests/gencg-output/instrumented-app_cg_FD_271.json";
     addIncluded();
     addSelected();
     setSourceAndSinkForShortestPaths();

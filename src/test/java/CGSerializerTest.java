@@ -1,7 +1,12 @@
+import static org.junit.Assert.assertTrue;
+
 import cgs.CGDeserializer;
 import cgs.CGSerializer;
 import cgs.MyCallGraph;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Test;
 import soot.RefType;
 import soot.SootClass;
@@ -51,7 +56,13 @@ public class CGSerializerTest {
     cg.addEdge(e2);
     String path = "cgtest.json";
     CGSerializer.serialize(cg, path);
-    MyCallGraph callgraph = CGDeserializer.deserialize(path);
-    System.out.println(callgraph);
+    MyCallGraph callgraph1 = CGDeserializer.deserialize(path);
+
+    MyCallGraph callgraph2 =
+        CGDeserializer.deserialize(
+            Paths.get("./src/test/resources/cgtest.json").toAbsolutePath().toString());
+    Set<String> edges = new HashSet<>();
+    callgraph1.edges.forEach(e -> edges.add(e.toString()));
+    callgraph2.edges.forEach(e -> assertTrue(edges.contains(e.toString())));
   }
 }
