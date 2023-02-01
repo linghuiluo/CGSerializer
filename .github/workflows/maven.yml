@@ -1,0 +1,35 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Check out soot 4.3.0-SNAPSHOT for CGSerializer
+      run: |
+        cd /home/runner/work/
+        git clone https://github.com/soot-oss/soot.git
+        cd soot
+        git checkout fe86c3e73d9b7bcd810dadd2aa81351d4288642d
+        mvn install -DskipTests
+    - name: Build CGSerializer
+      run: mvn install -DskipTests
+    - run: ls
+    - uses: actions/upload-artifact@v2
+      with:
+          name: CGSerializer-0.0.2.jar
+          path: /home/runner/work/CGSerializer/CGSerializer/target/CGSerializer-0.0.2.jar
+
